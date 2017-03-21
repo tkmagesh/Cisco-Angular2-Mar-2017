@@ -1,12 +1,12 @@
 <!-- 
 Use Cases
 =========
-1. Add a bug
-2. List the bugs
-3. Toggle the 'closed' status of a bug
-4. Remove closed bugs
-5. Display statistics
-6. Improve bug display
+1. Add a bug - done
+2. List the bugs - done
+3. Toggle the 'closed' status of a bug - done
+4. Remove closed bugs - done
+5. Display statistics - done
+6. Improve bug display - done
 7. Sort the bugs
 8. Persist the bugs in the 'localStorage'
 9. Display 'createdAt'
@@ -14,34 +14,39 @@ Use Cases
 11. Make the bugs accessible through unique urls
  -->
 <section class="stats">
-	<span class="closed">2</span>
+	<span class="closed">{{getClosedCount()}}</span>
 	<span>/</span>
-	<span>5</span>
+	<span>{{bugs.length}}</span>
 </section>
 <section class="sort">
 	<label for="">Order By :</label>
-	<select name="" id="">
-		<option value=""></option>
-		<option value=""></option>
+	<select [(ngModel)]="orderBy">
+		<option value="name">Name</option>
+		<option value="isClosed">Status</option>
 	</select>
 	<label for="">Descending ? :</label>
-	<input type="checkbox" name="" id="">
+	<input type="checkbox" [(ngModel)]="isDescending">
 </section>
 <section class="edit">
 	<label for="">Bug Name :</label>
-	<input type="text" name="" id="">
-	<input type="button" value="Add New">
+	<input type="text" #txtBugName>
+	<input type="button" value="Add New" (click)="onAddNewClick(txtBugName.value)">
 	<input type="button" value="Reset">
 </section>
 <section class="list">
 	<ol>
-		<li>
-			<span class="bugname">Bug - 1</span>
-			<div class="datetime">[Created At]</div>
-		</li>
-		<li>
-			<span class="bugname closed">Bug - 2</span>
+		<li *ngFor="let bug of ( bugs | sort:orderBy:isDescending )">
+			<span class="bugname" (click)="onBugClick(bug)" [ngClass]="{closed : bug.isClosed}">{{bug.name | trimText:40}}</span>
 			<div class="datetime">[Created At]</div>
 		</li>
 	</ol>
+	<input type="button" value="Remove Closed" (click)="onRemoveClosedClick()">
 </section>
+
+
+
+
+
+
+
+
