@@ -1,0 +1,11 @@
+.field{
+	margin-bottom: 10px;
+}
+#divResult{
+	color: red;
+	font-weight: bold;
+	font-size: 26pt
+}
+label{
+	display: block;
+}

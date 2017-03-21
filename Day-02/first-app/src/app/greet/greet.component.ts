@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 			<label for="">Name :</label>
 			<input type="text" [(ngModel)]="username" />
 			<input type="button" value="Greet" (click)="onGreetClick()"/>
-			<div>{{message}}</div>
+			<greet-message [msg]="message"></greet-message>
 		</div>`
 })
 export class GreetComponent{
