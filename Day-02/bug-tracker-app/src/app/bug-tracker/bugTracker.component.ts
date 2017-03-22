@@ -1,41 +1,46 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
 import { IBug } from '../models/IBug';
+import { BugStorageService } from '../services/bugStorage.service';
 
 @Component({
 	selector : 'bug-tracker',
 	templateUrl : './bugTracker.component.html',
 	styleUrls : ['./bugTracker.style.css']
 })
-export class BugTrackerComponent{
+export class BugTrackerComponent implements OnInit{
 	
 	public bugs : Array<IBug> = [];
+	public bugStorage : BugStorageService = new BugStorageService();
+
+	ngOnInit(){
+		this.bugs = this.bugStorage.getAll();
+	}
 
 	onAddNewClick(bugName : string){
-		let newBug : IBug = {
-			name : bugName,
-			isClosed : false
-		}
+		let newBug : IBug = this.bugStorage.addNew(bugName);
 		this.bugs = this.bugs.concat([newBug]);
 	}
 
-	onBugClick(bug:IBug){
-		bug.isClosed = !bug.isClosed;
+	onBugClick(bugToToggle : IBug){
+		this.bugs = this.bugs.map(bug => {
+			if (bugToToggle === bug){
+				return this.bugStorage.toggle(bug);
+			} else {
+				return bug;
+			}
+		})
 	}
 
 	onRemoveClosedClick(){
-		for(let index = this.bugs.length-1; index >= 0; index--){
-			if (this.bugs[index].isClosed)
-				this.bugs.splice(index,1);
-		}
+		this.bugs.forEach(bug => {
+			if (bug.isClosed)
+				this.bugStorage.remove(bug);
+		});
+		
+		this.bugs = this.bugs.filter(bug => !bug.isClosed);
 	}
 
-	getClosedCount(){
-		let closedCount = 0;
-		for(let index=0; index < this.bugs.length; index++)
-			if (this.bugs[index].isClosed)
-				++closedCount;
-		return closedCount;
-	}
+	
 }
 
 

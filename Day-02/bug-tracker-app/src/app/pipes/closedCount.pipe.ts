@@ -3,15 +3,12 @@ import { IBug } from '../models/IBug';
 
 @Pipe({
 	name: 'closedCount',
-	pure : false
+	pure : true
 })
 export class ClosedCountPipe implements PipeTransform {
-	transform(value: Array<IBug>): any {
-		console.log('closedCount pipe transform');
-		let result : number = 0;
-		for(let index=0; index < value.length; index++)
-			if (value[index].isClosed)
-				++result;
-		return result;
+	transform(value: Array<IBug>): number {
+		return value.reduce((result, bug) => {
+			return bug.isClosed ? ++result : result;
+		}, 0);
 	}
 }
