@@ -37,12 +37,7 @@ Use Cases
 	<label for="">Descending ? :</label>
 	<input type="checkbox" [(ngModel)]="isDescending">
 </section>
-<section class="edit">
-	<label for="">Bug Name :</label>
-	<input type="text" #txtBugName>
-	<input type="button" value="Add New" (click)="onAddNewClick(txtBugName.value)">
-	<input type="button" value="Reset">
-</section>
+<bug-edit (onNewBug)="onNewBugEvent($event)"></bug-edit>
 <section class="list">
 	<ol>
 		<li *ngFor="let bug of ( bugs | sort:orderBy:isDescending )">

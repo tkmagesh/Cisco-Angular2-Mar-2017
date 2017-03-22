@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bug-tracker/bugTracker.component';
 import { ClosedCountPipe } from './pipes/closedCount.pipe';
 import { BugStatsComponent } from './bug-tracker/bug-stats/bugStats.component';
+import { BugEditComponent } from './bug-tracker/bug-edit/bugEdit.component';
 
 
 import { BugStorageService } from './services/bugStorage.service';
@@ -19,7 +20,8 @@ import { BugOperationsService } from './services/bugOperations.service';
     AppComponent,
     BugTrackerComponent,
     ClosedCountPipe,
-    BugStatsComponent
+    BugStatsComponent,
+    BugEditComponent
   ],
   imports: [
     BrowserModule,
