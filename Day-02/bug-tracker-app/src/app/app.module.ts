@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { UtilsModule } from '../utils/utils.module';
+
 import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bug-tracker/bugTracker.component';
-import { TrimTextPipe } from './pipes/trimText.pipe';
-import { SortPipe } from './pipes/sort.pipe';
 import { ClosedCountPipe } from './pipes/closedCount.pipe';
-import { ElapsedPipe } from './pipes/elapsed.pipe';
+import { BugStatsComponent } from './bug-tracker/bug-stats/bugStats.component';
+
 
 import { BugStorageService } from './services/bugStorage.service';
 import { BugOperationsService } from './services/bugOperations.service';
@@ -17,15 +18,14 @@ import { BugOperationsService } from './services/bugOperations.service';
   declarations: [
     AppComponent,
     BugTrackerComponent,
-    TrimTextPipe,
-    SortPipe,
     ClosedCountPipe,
-    ElapsedPipe
+    BugStatsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    UtilsModule
   ],
   providers: [
     BugStorageService,

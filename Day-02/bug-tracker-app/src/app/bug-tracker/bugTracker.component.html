@@ -26,11 +26,7 @@ Use Cases
 10. Persist the bugs in the server
 11. Make the bugs accessible through unique urls
  -->
-<section class="stats">
-	<span class="closed">{{ bugs | closedCount }}</span>
-	<span>/</span>
-	<span>{{bugs.length}}</span>
-</section>
+<bug-stats [data]="bugs"></bug-stats>
 <section class="sort">
 	<label for="">Order By :</label>
 	<select [(ngModel)]="orderBy">
