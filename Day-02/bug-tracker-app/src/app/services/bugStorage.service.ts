@@ -1,11 +1,17 @@
 import { IBug } from '../models/IBug';
+import { Injectable } from '@angular/core';
+
 import { BugOperationsService } from './bugOperations.service';
 
+@Injectable()
 export class BugStorageService{
 	private currentBugId : number = 0;
 	private storage = window.localStorage;
 
-	private bugOperationsService : BugOperationsService = new BugOperationsService();
+	//private bugOperationsService : BugOperationsService = new BugOperationsService();
+	constructor(private bugOperationsService : BugOperationsService){
+
+	}
 
 	private saveBug(bug : IBug){
 		this.storage.setItem(bug.id.toString(), JSON.stringify(bug));

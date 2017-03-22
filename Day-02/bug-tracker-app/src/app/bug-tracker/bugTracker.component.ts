@@ -11,6 +11,9 @@ export class BugTrackerComponent implements OnInit{
 	
 	public bugs : Array<IBug> = [];
 	
+	public orderBy : string = 'createdAt';
+	public isDescending : boolean = true;
+	
 	constructor(private bugStorage : BugStorageService){
 		console.log(this.bugStorage);	
 	}

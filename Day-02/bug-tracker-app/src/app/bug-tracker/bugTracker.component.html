@@ -1,14 +1,14 @@
 <!-- 
 Use Cases
 =========
-1. Add a bug 							- done
-2. List the bugs 						- done
-3. Toggle the 'closed' status of a bug 	- done
-4. Remove closed bugs 					- done
-5. Display statistics 					- done
-6. Improve bug display 					- done
-7. Sort the bugs 						- done
-8. Persist the bugs in the 'localStorage'
+1. Add a bug 								- done
+2. List the bugs 							- done
+3. Toggle the 'closed' status of a bug 		- done
+4. Remove closed bugs 						- done
+5. Display statistics 						- done
+6. Improve bug display 						- done
+7. Sort the bugs 							- done
+8. Persist the bugs in the 'localStorage' 	- done
 	window.localStorage
 	====================
 		* key/value store
@@ -22,7 +22,7 @@ Use Cases
 			- key(index)  //=> key at index
 			- clear()
 			- length //=> number of items in the storage
-9. Display 'createdAt'
+9. Display 'createdAt'						
 10. Persist the bugs in the server
 11. Make the bugs accessible through unique urls
  -->
@@ -36,6 +36,7 @@ Use Cases
 	<select [(ngModel)]="orderBy">
 		<option value="name">Name</option>
 		<option value="isClosed">Status</option>
+		<option value="createdAt">Created At</option>
 	</select>
 	<label for="">Descending ? :</label>
 	<input type="checkbox" [(ngModel)]="isDescending">
@@ -50,7 +51,7 @@ Use Cases
 	<ol>
 		<li *ngFor="let bug of ( bugs | sort:orderBy:isDescending )">
 			<span class="bugname" (click)="onBugClick(bug)" [ngClass]="{closed : bug.isClosed}">{{bug.name | trimText:40}}</span>
-			<div class="datetime">[Created At]</div>
+			<div class="datetime">[{{bug.createdAt | elapsed}}]</div>
 		</li>
 	</ol>
 	<input type="button" value="Remove Closed" (click)="onRemoveClosedClick()">

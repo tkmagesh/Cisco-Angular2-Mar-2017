@@ -8,8 +8,10 @@ import { BugTrackerComponent } from './bug-tracker/bugTracker.component';
 import { TrimTextPipe } from './pipes/trimText.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { ClosedCountPipe } from './pipes/closedCount.pipe';
+import { ElapsedPipe } from './pipes/elapsed.pipe';
 
 import { BugStorageService } from './services/bugStorage.service';
+import { BugOperationsService } from './services/bugOperations.service';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,18 @@ import { BugStorageService } from './services/bugStorage.service';
     BugTrackerComponent,
     TrimTextPipe,
     SortPipe,
-    ClosedCountPipe
+    ClosedCountPipe,
+    ElapsedPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [BugStorageService],
+  providers: [
+    BugStorageService,
+    BugOperationsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
