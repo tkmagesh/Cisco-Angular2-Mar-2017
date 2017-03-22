@@ -36,6 +36,11 @@ export class BugTrackerComponent implements OnInit{
 		})
 	}
 
+	onBugSort(sortData:any){
+		this.orderBy = sortData.orderBy;
+		this.isDescending = sortData.isDescending;
+	}
+
 	onRemoveClosedClick(){
 		this.bugs.forEach(bug => {
 			if (bug.isClosed)

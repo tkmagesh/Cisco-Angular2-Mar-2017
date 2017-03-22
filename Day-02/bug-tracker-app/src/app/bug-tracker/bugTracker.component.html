@@ -27,16 +27,7 @@ Use Cases
 11. Make the bugs accessible through unique urls
  -->
 <bug-stats [data]="bugs"></bug-stats>
-<section class="sort">
-	<label for="">Order By :</label>
-	<select [(ngModel)]="orderBy">
-		<option value="name">Name</option>
-		<option value="isClosed">Status</option>
-		<option value="createdAt">Created At</option>
-	</select>
-	<label for="">Descending ? :</label>
-	<input type="checkbox" [(ngModel)]="isDescending">
-</section>
+<bug-sort (onSort)="onBugSort($event)"></bug-sort>
 <bug-edit (onNewBug)="onNewBugEvent($event)"></bug-edit>
 <section class="list">
 	<ol>

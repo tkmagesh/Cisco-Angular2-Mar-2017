@@ -1,0 +1,10 @@
+<section class="sort">
+	<label for="">Order By :</label>
+	<select [(ngModel)]="orderBy" (change)="triggerSort(orderBy, isDescending)">
+		<option value="name">Name</option>
+		<option value="isClosed">Status</option>
+		<option value="createdAt">Created At</option>
+	</select>
+	<label for="">Descending ? :</label>
+	<input type="checkbox" [(ngModel)]="isDescending" (change)="triggerSort(orderBy, isDescending)">
+</section>
