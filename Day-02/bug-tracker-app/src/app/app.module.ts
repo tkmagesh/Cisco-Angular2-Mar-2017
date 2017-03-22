@@ -11,6 +11,7 @@ import { ClosedCountPipe } from './pipes/closedCount.pipe';
 import { BugStatsComponent } from './bug-tracker/bug-stats/bugStats.component';
 import { BugEditComponent } from './bug-tracker/bug-edit/bugEdit.component';
 import { BugSortComponent } from './bug-tracker/bug-sort/bugSort.component';
+import { BugListComponent } from './bug-tracker/bug-list/bugList.component';
 
 
 import { BugStorageService } from './services/bugStorage.service';
@@ -23,7 +24,8 @@ import { BugOperationsService } from './services/bugOperations.service';
     ClosedCountPipe,
     BugStatsComponent,
     BugEditComponent,
-    BugSortComponent
+    BugSortComponent,
+    BugListComponent
   ],
   imports: [
     BrowserModule,
