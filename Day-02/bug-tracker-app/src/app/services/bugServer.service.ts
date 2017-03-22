@@ -19,7 +19,7 @@ export class BugServerService{
     loadBugs(){
         this._http
             .get(this._baseUrl)
-            .subscribe(response => this.list = response.json());
+            .subscribe(response => this.list = response.json(), (err) => console.log(err));
     }
      addNew(bugname : string){
         let newBugData = this._bugOperations.createNew(0, bugname)
@@ -33,7 +33,6 @@ export class BugServerService{
         this._http
             .put(`${this._baseUrl}/${toggledBug.id}`, toggledBug)
             .subscribe((response) => {
-               //this.list = this.list.map(bug => bug.id === toggledBug.id ? toggledBug : bug);
                this.loadBugs();
             });
     }
@@ -50,6 +49,7 @@ export class BugServerService{
             removePromises.push(removePromsie);
         });
         Promise.all(removePromises)
-            .then(this.loadBugs);
+            .then(() => this.loadBugs())
+
     }
 }
