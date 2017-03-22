@@ -9,6 +9,8 @@ import { TrimTextPipe } from './pipes/trimText.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { ClosedCountPipe } from './pipes/closedCount.pipe';
 
+import { BugStorageService } from './services/bugStorage.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,7 @@ import { ClosedCountPipe } from './pipes/closedCount.pipe';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [BugStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

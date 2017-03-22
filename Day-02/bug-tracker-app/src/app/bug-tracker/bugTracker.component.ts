@@ -10,8 +10,10 @@ import { BugStorageService } from '../services/bugStorage.service';
 export class BugTrackerComponent implements OnInit{
 	
 	public bugs : Array<IBug> = [];
-	public bugStorage : BugStorageService = new BugStorageService();
-
+	
+	constructor(private bugStorage : BugStorageService){
+		console.log(this.bugStorage);	
+	}
 	ngOnInit(){
 		this.bugs = this.bugStorage.getAll();
 	}
@@ -36,7 +38,7 @@ export class BugTrackerComponent implements OnInit{
 			if (bug.isClosed)
 				this.bugStorage.remove(bug);
 		});
-		
+
 		this.bugs = this.bugs.filter(bug => !bug.isClosed);
 	}
 
