@@ -15,7 +15,7 @@ export class BugTrackerComponent{
 			name : bugName,
 			isClosed : false
 		}
-		this.bugs.push(newBug);
+		this.bugs = this.bugs.concat([newBug]);
 	}
 
 	onBugClick(bug:IBug){
