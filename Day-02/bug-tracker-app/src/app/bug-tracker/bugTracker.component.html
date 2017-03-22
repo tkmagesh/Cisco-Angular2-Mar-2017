@@ -22,14 +22,14 @@ Use Cases
 			- key(index)  //=> key at index
 			- clear()
 			- length //=> number of items in the storage
-9. Display 'createdAt'						
-10. Persist the bugs in the server
+9. Display 'createdAt'							- done			
+10. Persist the bugs in the server				- done
 11. Make the bugs accessible through unique urls
  -->
-<bug-stats [data]="bugs"></bug-stats>
+<bug-stats [data]="bugService.list"></bug-stats>
 <bug-sort (onSort)="onBugSort($event)"></bug-sort>
 <bug-edit (onNewBug)="onNewBugEvent($event)"></bug-edit>
-<bug-list [data]= "bugs" (onBugToggle)="onBugClick($event)" (onRemoveClosed)="onRemoveClosedClick($event)"></bug-list>
+<bug-list [data]= "bugService.list" (onBugToggle)="onBugClick($event)" (onRemoveClosed)="onRemoveClosedClick($event)"></bug-list>
 
 
 
